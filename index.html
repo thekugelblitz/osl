@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DNS Checker</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<style>
+		.badge-padding{
+			padding: 5px;
+		}
+	</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <!-- Brand -->
+        <a class="navbar-brand">DNS / SEO Tools</a>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">DNS Checker</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="serp.php">SERP Checker</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="404.php">404 Checker</a>
+                </li>
+				<li class="nav-item">
+                    <a class="nav-link" href="ipgeoloc.php">IP-GeoLocation</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <div class="container">
+        <h2>DNS Checker</h2>
+        <div class="row">
+            <div class="col-sm-12">
+                <form action="" method="">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <input type="email" class="form-control" placeholder="example.com" id="domain">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <select class="form-control" id="sel1">
+                                <option value="A" title="Host address (dotted quad)" selected="selected">A</option>
+                                <option value="AAAA" title="IP v6 address (address spec with colons)">AAAA</option>
+                                <option value="MX" title="Mail exchanger (preference value, domain name)">MX</option>
+                                <option value="NS" title="Authoritative nameserver (domain name)">NS</option>
+                                <option value="TXT" title="Descriptive text (one or more strings)">TXT</option>
+                                <option value="SOA" title="Start of Authority">SOA</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <button type="submit" class="btn btn-primary btn-block">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>DNS Server</th>
+                            <th>Server IP</th>
+                            <th>Record</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cloudflare DNS Servers</td>
+                            <td>1.1.1.1</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Comodo Secure DNS</td>
+                            <td>8.26.56.26</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Google</td>
+                            <td>8.8.8.8</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>OpenDNS</td>
+                            <td>208.67.222.222</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Quad9</td>
+                            <td>9.9.9.9</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Verisign Public DNS</td>
+                            <td>64.6.64.6</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
