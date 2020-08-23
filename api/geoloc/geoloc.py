@@ -1,8 +1,8 @@
+import sys
 import requests
 from bs4 import BeautifulSoup as soup
-
-res = requests.get('https://ipinfo.io/1.1.1.1')
-#res = requests.get('https://host.io/nimlo.in')
+ip = sys.argv[1]
+res = requests.get('https://ipinfo.io/'+ip)
 
 res.raise_for_status()
 page_soup = soup(res.text,'html.parser')

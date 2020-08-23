@@ -23,16 +23,16 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">DNS Checker</a>
+                    <a class="nav-link" href="index.html">DNS Checker</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="serp.php">SERP Checker</a>
+                    <a class="nav-link" href="serp.html">SERP Checker</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="404.php">404 Checker</a>
+                    <a class="nav-link" href="404.html">404 Checker</a>
                 </li>
 				<li class="nav-item">
-                    <a class="nav-link" href="ipgeoloc.php">IP-GeoLocation</a>
+                    <a class="nav-link" href="ipgeoloc.html">IP-GeoLocation</a>
                 </li>
             </ul>
         </div>
@@ -42,7 +42,7 @@
         <h2>SERP Checker</h2>
         <div class="row">
             <div class="col-sm-12">
-                <form action="" method="">
+                <form>
                     <div class="row">
                         <div class="form-group col-sm-6">
                             <input type="text" class="form-control" placeholder="https://example.com" id="url">
@@ -51,7 +51,7 @@
                             <input type="text" class="form-control" placeholder="keyword" id="keyword">
                         </div>
                         <div class="form-group col-sm-2">
-                            <button type="submit" class="btn btn-primary btn-block">Search</button>
+                            <button type="button" class="btn btn-primary btn-block" onclick="myFunction()">Search</button>
                         </div>
                     </div>
                 </form>
@@ -59,26 +59,59 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <table class="table table-striped">
+                <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>Rank : </th>
+                            <th><h6 id="your_rank">Rank</h6></th>
+                            <th><h6 id="your_keyword">Keyword</h6></th>
+                            <th><h6 id="your_url">Website URL</h6></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Result 1</td>
-                        </tr>
-                        <tr>
-                            <td>Result 2</td>
-                        </tr>
-                        <tr>
-                            <td>Result 3</td>
-                        </tr>
+                    <tbody id="table_data">
+                        
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+    <script>
+        // AJAX code to fetch customer data
+        function myFunction(){
+            if($('#url').val()==""||$('#keyword').val()==""){
+                alert('Please fill all the fields !');
+            }
+            else{
+                //alert(this.value);
+                $.get("api/serp/getserp.php",
+                {
+                    keyword: $('#keyword').val().replace(/\s/g, "+"),
+                    url: $('#url').val()
+                },
+                function(data,status){
+                    if(data==""){
+
+                    }
+                    else{
+                        var myArr = JSON.parse(data);
+                        
+                        $('#your_rank').html(myArr[0].your_rank);
+                        $('#your_url').html(myArr[0].your_url);
+                        $('#your_keyword').html(myArr[0].your_keyword);
+                        var str = '';
+                        for (let index = 1; index < myArr.length; index++) {
+                            var tr = '';
+                            tr = '<tr>';
+                            tr += '<td>'+ myArr[index].rank + '</td>' ;
+                            tr += '<td>'+ myArr[index].link + '</td>' ;
+                            tr += '<td>'+ myArr[index].text + '</td>' ;
+                            tr += '</tr>';
+                            str += tr;
+                        }
+                        $('#table_data').html(str);
+                    }
+                });
+            }
+        }
+    </script>
 </body>
 </html>
