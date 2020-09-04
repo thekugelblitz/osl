@@ -33,9 +33,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="serp.html">SERP Checker</a>
                 </li>
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a class="nav-link" href="404.html">404 Checker</a>
-                </li>
+                </li>-->
 				<li class="nav-item">
                     <a class="nav-link" href="ipgeoloc.html">IP-GeoLocation</a>
                 </li>
@@ -124,6 +124,7 @@
             }
             else{
                 //alert(this.value);
+                $("table:first tr td:last-child").html('<img src="assets/clock.svg" height="20" width="20">');
                 $.get("api/dns/getdns.php",
                 {
                     domain: $('#domain').val(),
